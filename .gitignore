@@ -1,0 +1,3 @@
+# Exclude specific folders
+frontend/realstate_frontend/node_modules/
+backend/realstate_env/
