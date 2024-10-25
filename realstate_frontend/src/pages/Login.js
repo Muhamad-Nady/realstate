@@ -31,7 +31,7 @@ const LoginPage = () => {
         localStorage.setItem("access_token", access);
         localStorage.setItem("refresh_token", refresh);
         alert(msg); // Optional: Display success message
-        navigate("/credentials"); // Redirect to dashboard or home
+        navigate("/"); // Redirect to dashboard or home
       } else {
         setError("Login failed. Please try again.");
       }
