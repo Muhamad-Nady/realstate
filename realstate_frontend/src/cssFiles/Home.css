@@ -1,54 +1,78 @@
 .home-container {
-    position: relative;
-    padding: 20px;
-  }
-  
-  .circle-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: 70px; /* Adjust as necessary */
-    right: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    z-index: 1;
-  }
-  
-  .dropdown-menu a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .dropdown-menu a:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .sections {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Space between sections */
-  }
-  
-  .section {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
-  
+  position: relative;
+  padding: 20px;
+}
+
+.circle-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 70px; /* Adjust as necessary */
+  right: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333; /* Profile and Credentials links color */
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #333; /* Same color as profile and credentials links */
+  cursor: pointer;
+  width: 100%;
+  text-align: left; /* Align text to the left */
+  padding: 10px; /* Add padding for spacing */
+  font-size: 16px; /* Adjust font size to match profile link */
+  /* font-family: inherit; Inherit the font style from parent */
+  font-weight: bold; /* Make the font bold */
+
+}
+
+.logout-button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Light black background on hover */
+}
+
+.logout-icon {
+  margin-right: 10px; /* Spacing between icon and text */
+  font-size: 20px; /* Adjust size as needed */
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between sections */
+}
+
+.section {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
