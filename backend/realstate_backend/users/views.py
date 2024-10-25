@@ -2,10 +2,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .serializers import UserRegistrationSerializer
+from .serializers import UserRegistrationSerializer, UserProfileSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenRefreshView
+from django.contrib.auth.models import User
 
 class CustomTokenRefreshView(TokenRefreshView):
     # Customize the view as needed
@@ -47,8 +48,7 @@ class UserLoginView(APIView):
 
 
 class UserLogoutView(APIView):
-    # No authentication needed since refresh token will be used
-    permission_classes = []  # Remove the IsAuthenticated requirement
+    permission_classes = []  # No authentication required, refresh token is used
 
     def post(self, request):
         try:
@@ -64,3 +64,20 @@ class UserLogoutView(APIView):
 
         except Exception as e:
             return Response({"msg": "Invalid or expired token."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        serializer = UserProfileSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request):
+        user = request.user
+        serializer = UserProfileSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"msg": "Profile updated successfully."}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

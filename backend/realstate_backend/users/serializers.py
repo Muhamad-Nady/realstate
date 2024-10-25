@@ -32,3 +32,18 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         if User.objects.filter(username=value).exists():
             raise serializers.ValidationError("A user with that username already exists.")
         return value
+
+
+#user profile serlielizer 
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name', 'last_name')
+        read_only_fields = ('username', 'email')  # Prevent updates to these fields
+
+    def update(self, instance, validated_data):
+        """Update user profile fields."""
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance
