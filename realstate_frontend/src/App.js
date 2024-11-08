@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Credentials from "./pages/Credentials"; // Import the new page;
 import UserProfile from "./pages/UserProfile"; // Adjust the path as necessary
 import Home from "./pages/Home"; // Import the Home component
+import PropertyDetails from "./pages/PropertyDetails"; // Import the new component
 import "./App.css";
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/credentials" element={<Credentials />} />
         <Route path="/profile" element={<UserProfile />} />{" "}
+        <Route path="/properties/:id" element={<PropertyDetails />} />{" "}
+        {/* New Route */}
         {/* Add UserProfile route */}
       </Routes>
     </Router>
