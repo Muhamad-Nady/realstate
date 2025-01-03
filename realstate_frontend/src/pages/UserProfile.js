@@ -1,6 +1,7 @@
 // UserProfile.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar"; // Import Navbar
 
 const UserProfile = () => {
   const [userData, setUserData] = useState({

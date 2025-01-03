@@ -2,49 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../cssFiles/Home.css";
 import axios from "axios";
+import Navbar from "../components/Navbar"; // Import Navbar
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [forRentProperties, setForRentProperties] = useState([]);
-  const [toBuyProperties, setToBuyProperties] = useState([]);
+  const [allProperties, setAllProperties] = useState([]);
   const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
 
-  // Fetch properties for each section on component mount
+  // Fetch all properties on component mount
   useEffect(() => {
-    const fetchForRentProperties = async () => {
+    const fetchAllProperties = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/properties/",
-          {
-            params: { category: "rent" }, // Assuming properties have a category field
-          }
+          "http://localhost:8000/api/properties/"
         );
-        setForRentProperties(response.data);
+        setAllProperties(response.data);
       } catch (error) {
-        console.error("Error fetching for rent properties:", error);
+        console.error("Error fetching properties:", error);
       }
     };
 
-    const fetchToBuyProperties = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:8000/api/properties/",
-          {
-            params: { category: "buy" }, // Assuming properties have a category field
-          }
-        );
-        setToBuyProperties(response.data);
-      } catch (error) {
-        console.error("Error fetching to buy properties:", error);
-      }
-    };
-
-    fetchForRentProperties();
-    fetchToBuyProperties();
+    fetchAllProperties();
   }, []);
 
   const handleLogout = async () => {
@@ -64,6 +46,13 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* Widget for Property Upload */}
+      <div className="upload-widget">
+        <Link to="/upload">
+          <button className="upload-button">Upload Property</button>
+        </Link>
+      </div>
+
       <div className="circle-menu" onClick={toggleMenu}>
         &#9776;
       </div>
@@ -88,12 +77,11 @@ const Home = () => {
         </div>
       )}
 
-      <div className="sections">
-        {/* For Rent Section */}
-        <div className="section" id="for-rent">
-          <h2>For Rent</h2>
-          {forRentProperties.length > 0 ? (
-            forRentProperties.map((property) => (
+      <div className="properties-list">
+        <h2>All Available Units</h2>
+        <div className="properties-grid">
+          {allProperties.length > 0 ? (
+            allProperties.map((property) => (
               <div key={property.id} className="property-card">
                 <img
                   src={property.image}
@@ -107,36 +95,8 @@ const Home = () => {
               </div>
             ))
           ) : (
-            <p>No properties available for rent.</p>
+            <p>No properties available.</p>
           )}
-        </div>
-
-        {/* To Buy Section */}
-        <div className="section" id="to-buy">
-          <h2>To Buy</h2>
-          {toBuyProperties.length > 0 ? (
-            toBuyProperties.map((property) => (
-              <div key={property.id} className="property-card">
-                <img
-                  src={property.image}
-                  alt={property.title}
-                  className="property-image"
-                />
-                <h3>{property.title}</h3>
-                <p>{property.location}</p>
-                <p>Price: ${property.price}</p>
-                <Link to={`/properties/${property.id}`}>View Details</Link>
-              </div>
-            ))
-          ) : (
-            <p>No properties available to buy.</p>
-          )}
-        </div>
-
-        {/* Placeholder for Another Section */}
-        <div className="section" id="another-section">
-          <h2>Another Section</h2>
-          <p>Content for another section</p>
         </div>
       </div>
     </div>
