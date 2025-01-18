@@ -1,0 +1,110 @@
+/* src/cssFiles/PropertyUpload.css */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;  /* Adjust the height based on your navbar */
+    background-color: #333;
+    color: white;
+    z-index: 1000;  /* Ensure the navbar stays on top of other elements */
+    padding: 10px;
+    display: flex;
+    justify-content: center;  /* Center the navbar items */
+    align-items: center;      /* Vertically center items */
+  }
+  
+  .navbar-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;  /* Center the list items */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-list li {
+    margin: 0 15px;
+  }
+  
+  .navbar-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .navbar-link:hover {
+    text-decoration: underline;
+  }
+  
+  .property-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    margin-top: 80px; /* Add margin to prevent overlap with navbar */
+  }
+  
+  .property-upload-form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px;  /* Limit width of the form */
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  .property-upload-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .property-upload-form input,
+  .property-upload-form textarea,
+  .property-upload-form button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .property-upload-form input[type="file"] {
+    border: none;
+    padding: 5px;
+  }
+  
+  .property-upload-form button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .property-upload-form button:hover {
+    background-color: #45a049;
+  }
+  
+  .property-upload-form input:focus,
+  .property-upload-form textarea:focus {
+    border-color: #4caf50;
+    outline: none;
+  }
+  
+  .property-upload-form textarea {
+    height: 200px;  /* Increase height of description field */
+    resize: vertical;
+  }
+  
+  .property-upload-form .form-group {
+    margin-bottom: 20px;
+  }
+  

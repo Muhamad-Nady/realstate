@@ -1,6 +1,8 @@
 // src/pages/PropertyUpload.js
 import React, { useState } from "react";
 import { uploadProperty } from "../api";
+import "../cssFiles/PropertyUpload.css"; // Import the CSS file
+import Navbar from "../components/Navbar"; // Import the Navbar component
 
 const PropertyUpload = () => {
   const [formData, setFormData] = useState({
@@ -45,63 +47,96 @@ const PropertyUpload = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="title"
-        value={formData.title}
-        onChange={handleChange}
-        placeholder="Title"
-        required
-      />
-      <textarea
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        placeholder="Description"
-        required
-      />
-      <input
-        name="location"
-        value={formData.location}
-        onChange={handleChange}
-        placeholder="Location"
-        required
-      />
-      <input
-        type="number"
-        name="bedrooms"
-        value={formData.bedrooms}
-        onChange={handleChange}
-        placeholder="Bedrooms"
-        required
-      />
-      <input
-        type="number"
-        name="bathrooms"
-        value={formData.bathrooms}
-        onChange={handleChange}
-        placeholder="Bathrooms"
-        required
-      />
-      <input
-        type="number"
-        name="price"
-        value={formData.price}
-        onChange={handleChange}
-        placeholder="Price"
-        required
-      />
-      <input
-        type="number"
-        name="square_footage"
-        value={formData.square_footage}
-        onChange={handleChange}
-        placeholder="Square Footage"
-        required
-      />
-      <input type="file" name="image" onChange={handleChange} />
-      <button type="submit">Upload Property</button>
-    </form>
+    <div>
+      <div className="navbar-container">
+        <Navbar /> {/* Ensure Navbar is centered */}
+      </div>
+      <div className="property-upload-container">
+        <form onSubmit={handleSubmit} className="property-upload-form">
+          <h2>Upload Property</h2>
+
+          <div className="form-group">
+            <input
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              placeholder="Title"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              placeholder="Description"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="Location"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              type="number"
+              name="bedrooms"
+              value={formData.bedrooms}
+              onChange={handleChange}
+              placeholder="Bedrooms"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              type="number"
+              name="bathrooms"
+              value={formData.bathrooms}
+              onChange={handleChange}
+              placeholder="Bathrooms"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              type="number"
+              name="price"
+              value={formData.price}
+              onChange={handleChange}
+              placeholder="Price"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              type="number"
+              name="square_footage"
+              value={formData.square_footage}
+              onChange={handleChange}
+              placeholder="Square Footage"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <input type="file" name="image" onChange={handleChange} />
+          </div>
+
+          <button type="submit">Upload Property</button>
+        </form>
+      </div>
+    </div>
   );
 };
 

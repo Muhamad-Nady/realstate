@@ -1,0 +1,76 @@
+/* src/cssFiles/PropertyDetails.css */
+
+.property-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    margin-top: 80px; /* Add margin to prevent overlap with navbar */
+  }
+  
+  .property-details h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .property-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .property-image {
+    width: 100%;
+    max-width: 400px; /* Maximum width for each image */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  
+  .property-table {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .property-table th, .property-table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .property-table th {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .property-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .property-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .property-details p {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .property-details strong {
+    font-weight: bold;
+    color: #4caf50;
+  }
+  
