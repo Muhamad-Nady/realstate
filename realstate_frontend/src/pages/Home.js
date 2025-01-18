@@ -13,6 +13,9 @@ const Home = () => {
     setMenuOpen((prev) => !prev);
   };
 
+  // Check if the user is logged in by verifying access_token
+  const isLoggedIn = localStorage.getItem("access_token");
+
   // Fetch all properties on component mount
   useEffect(() => {
     const fetchAllProperties = async () => {
@@ -46,12 +49,18 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Widget for Property Upload */}
-      <div className="upload-widget">
-        <Link to="/upload">
-          <button className="upload-button">Upload Property</button>
-        </Link>
-      </div>
+      {/* Widget for Property Upload - Only show for logged-in users */}
+      {isLoggedIn ? (
+        <div className="upload-widget">
+          <Link to="/upload">
+            <button className="upload-button">Upload Property</button>
+          </Link>
+        </div>
+      ) : (
+        <div className="upload-widget">
+          <p>Log in to upload your property</p>
+        </div>
+      )}
 
       <div className="circle-menu" onClick={toggleMenu}>
         &#9776;
@@ -59,21 +68,34 @@ const Home = () => {
 
       {menuOpen && (
         <div className="dropdown-menu">
-          <Link to="/profile" onClick={() => setMenuOpen(false)}>
-            Profile
-          </Link>
+             {isLoggedIn && (
+            <Link to="/profile" onClick={() => setMenuOpen(false)}>
+              Profile
+            </Link>
+                      )}
           <Link to="/credentials" onClick={() => setMenuOpen(false)}>
             Credentials
           </Link>
-          <button
-            className="logout-button"
-            onClick={() => {
-              handleLogout();
-              setMenuOpen(false);
-            }}
-          >
-            Logout
-          </button>
+          {isLoggedIn ? (
+            <button
+              className="logout-button"
+              onClick={() => {
+                handleLogout();
+                setMenuOpen(false);
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <>
+              <Link to="/login" onClick={() => setMenuOpen(false)}>
+                Login
+              </Link>
+              <Link to="/register" onClick={() => setMenuOpen(false)}>
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       )}
 

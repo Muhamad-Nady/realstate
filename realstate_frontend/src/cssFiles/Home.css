@@ -1,111 +1,228 @@
 /* src/cssFiles/Home.css */
+
+/* General Container Styles */
 .home-container {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  font-family: 'Arial', sans-serif;
 }
 
+/* Upload Widget Styles */
 .upload-widget {
-  text-align: right;
+  text-align: center;
   margin-bottom: 20px;
+  padding: 30px;
+  border: 2px dashed #4CAF50;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
+
+.upload-widget:hover {
+  border-color: #45a049;
+  background-color: #f0f0f0;
+}
+
+.upload-message {
+    font-size: 20px;
+    color: #ff5722;
+    font-weight: 600;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-message:hover {
+    color: #4CAF50;
+}
+
+/* Icon Style in Message */
+.upload-message i {
+    margin-right: 8px;
+    font-size: 24px;
+    vertical-align: middle;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Pulse animation for the icon */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
 
 .upload-button {
   background-color: #4CAF50;
   color: white;
-  padding: 10px 20px;
+  padding: 14px 30px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .upload-button:hover {
   background-color: #45a049;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Circle Menu Styles (Facebook Inspired) */
 .circle-menu {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 30px;
-  cursor: pointer;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 15px; /* Adjusted top */
+    left: 15px; /* Adjusted left */
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #f0f2f5; /* Light grey background */
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);/* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+    z-index: 1010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.dropdown-menu {
-  position: fixed;
-  top: 60px;
-  left: 20px;
-  background-color: white;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 1000;
+/* Icon Style inside Menu */
+.circle-menu i {
+    font-size: 1.3em;
+    color: #65676b; /* Dark grey color */
+    transition: color 0.3s ease; /* Smooth color transition */
 }
+
+.circle-menu:hover {
+    background-color: #e4e6eb; /* Slightly darker on hover */
+    transform: scale(1.05); /* subtle scaling effect*/
+     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* slightly stronger shadow on hover*/
+}
+.circle-menu:hover i{
+    color: #4CAF50;/* Color Change On Hover */
+}
+
+/* Dropdown Menu Styles (Facebook Inspired) */
+.dropdown-menu {
+    position: fixed;
+    top: 55px; /* Adjusted top */
+    left: 15px; /* Adjusted left */
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 15px;
+     border-radius: 8px; /* Less rounded corners */
+    z-index: 1000;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
 
 .dropdown-menu a,
 .logout-button {
   display: block;
-  margin-bottom: 10px;
-  color: #333;
+  margin-bottom: 12px;
+  color: #1c1e21; /* Dark grey text color */
   text-decoration: none;
+  font-size: 15px;
+  padding: 8px 10px; /* Padding for each element */
+    border-radius: 5px; /* rounded corners */
+    transition: background-color 0.2s ease, color 0.3s ease; /* Smooth background transition */
 }
 
+
+.dropdown-menu a:hover,
+.logout-button:hover {
+    background-color: #f0f2f5; /* Light grey background on hover */
+  color: #4CAF50; /* Change color on hover */
+}
+
+
+/* Logout Button Styles */
 .logout-button {
   background-color: #f44336;
   color: white;
   padding: 10px;
   border: none;
   cursor: pointer;
+  font-size: 15px;
+  border-radius: 5px;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
+
 
 .logout-button:hover {
   background-color: #e53935;
 }
 
+
+/* Properties List Styles */
 .properties-list {
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
+/* Properties Grid Styles */
 .properties-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 20px;
-  margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
 }
 
+/* Property Card Styles */
 .property-card {
   border: 1px solid #ddd;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 12px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.property-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
+.property-card:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
 }
+
+/* Property Image Styles */
+.property-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
 
 .property-card h3 {
-  margin: 15px 0;
+  margin: 18px 0 10px 0;
+    font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .property-card p {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #555;
 }
 
+
+/* Property Card Link Styles */
 .property-card a {
   color: #007bff;
   text-decoration: none;
+  font-weight: 500;
+    transition: color 0.3s ease;
 }
+
 
 .property-card a:hover {
   text-decoration: underline;
+  color: #0056b3;
 }

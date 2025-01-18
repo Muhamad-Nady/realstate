@@ -1,0 +1,3 @@
+# to get the project tree
+- tree -I 'node_modules|.git' > project_tree.txt
+
